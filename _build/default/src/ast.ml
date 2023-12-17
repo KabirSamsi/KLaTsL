@@ -1,0 +1,4 @@
+type k = string
+
+
+

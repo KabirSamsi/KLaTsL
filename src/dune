@@ -1,0 +1,4 @@
+(library
+  (name matrix)
+  (public_name MaTriX)
+  (libraries str menhirLib))

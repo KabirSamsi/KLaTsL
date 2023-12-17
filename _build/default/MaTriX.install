@@ -1,0 +1,19 @@
+lib: [
+  "_build/install/default/lib/MaTriX/META"
+  "_build/install/default/lib/MaTriX/ast.ml"
+  "_build/install/default/lib/MaTriX/dune-package"
+  "_build/install/default/lib/MaTriX/matrix.a"
+  "_build/install/default/lib/MaTriX/matrix.cma"
+  "_build/install/default/lib/MaTriX/matrix.cmi"
+  "_build/install/default/lib/MaTriX/matrix.cmt"
+  "_build/install/default/lib/MaTriX/matrix.cmx"
+  "_build/install/default/lib/MaTriX/matrix.cmxa"
+  "_build/install/default/lib/MaTriX/matrix.ml"
+  "_build/install/default/lib/MaTriX/matrix__Ast.cmi"
+  "_build/install/default/lib/MaTriX/matrix__Ast.cmt"
+  "_build/install/default/lib/MaTriX/matrix__Ast.cmx"
+  "_build/install/default/lib/MaTriX/opam"
+]
+libexec: [
+  "_build/install/default/lib/MaTriX/matrix.cmxs"
+]
