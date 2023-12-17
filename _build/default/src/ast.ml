@@ -1,4 +1,0 @@
-type k = string
-
-
-
