@@ -6,6 +6,8 @@
   (META
    ast.ml
    dune-package
+   eval.ml
+   eval.mli
    matrix.a
    matrix.cma
    matrix.cmi
@@ -16,6 +18,10 @@
    matrix__Ast.cmi
    matrix__Ast.cmt
    matrix__Ast.cmx
+   matrix__Eval.cmi
+   matrix__Eval.cmt
+   matrix__Eval.cmti
+   matrix__Eval.cmx
    opam))
  (libexec (matrix.cmxs)))
 (library
@@ -40,5 +46,9 @@
      (module
       (obj_name matrix__Ast)
       (visibility public)
-      (source (path Ast) (impl (path ast.ml))))))
+      (source (path Ast) (impl (path ast.ml))))
+     (module
+      (obj_name matrix__Eval)
+      (visibility public)
+      (source (path Eval) (intf (path eval.mli)) (impl (path eval.ml))))))
    (wrapped true))))

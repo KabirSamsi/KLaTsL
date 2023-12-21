@@ -3,7 +3,7 @@
 # Shared cache: disabled
 # Workspace root: "/Users/kabirsamsi/Desktop/Software Projects/PL/MaTriX"
 # Auto-detected concurrency: 8
-$ /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt -config > /var/folders/q2/dq7hmqnn4_18ng02v_hkwqpc0000gn/T/dune_058ae8_output
+$ /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt -config > /var/folders/q2/dq7hmqnn4_18ng02v_hkwqpc0000gn/T/dune_abfd22_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
@@ -117,12 +117,32 @@ $ /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt -config > /var/folders/q2
 #      ; windows_unicode = false
 #      }
 #  }
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamldep.opt -modules -impl src/ast.ml) > _build/default/src/.matrix.objs/matrix__Ast.impl.d
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.matrix.objs/byte -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/str -no-alias-deps -opaque -open Matrix -o src/.matrix.objs/byte/matrix__Ast.cmo -c -impl src/ast.ml)
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/matrix.cma src/.matrix.objs/byte/matrix.cmo src/.matrix.objs/byte/matrix__Ast.cmo)
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I test/.main.eobjs/byte -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/str -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/unix -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ounit2 -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ounit2/advanced -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/seq -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/stdlib-shims -I src/.matrix.objs/byte -no-alias-deps -opaque -o test/.main.eobjs/byte/dune__exe__Main.cmi -c -intf test/main.mli)
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.matrix.objs/byte -I src/.matrix.objs/native -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Matrix -o src/.matrix.objs/native/matrix__Ast.cmx -c -impl src/ast.ml)
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I test/.main.eobjs/byte -I test/.main.eobjs/native -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/str -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/unix -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ounit2 -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ounit2/advanced -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/seq -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/stdlib-shims -I src/.matrix.objs/byte -I src/.matrix.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.main.eobjs/native/dune__exe__Main.cmx -c -impl test/main.ml)
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -a -o src/matrix.cmxa src/.matrix.objs/native/matrix.cmx src/.matrix.objs/native/matrix__Ast.cmx)
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -shared -linkall -I src -o src/matrix.cmxs src/matrix.cmxa)
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -o test/main.exe /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/str/str.cmxa /Users/kabirsamsi/.opam/cs3110-2023fa/lib/menhirLib/menhirLib.cmxa src/matrix.cmxa /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/unix/unix.cmxa /Users/kabirsamsi/.opam/cs3110-2023fa/lib/stdlib-shims/stdlib_shims.cmxa /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ounit2/advanced/oUnitAdvanced.cmxa /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ounit2/oUnit.cmxa test/.main.eobjs/native/dune__exe__Main.cmx)
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamldep.opt -modules -impl src/eval.ml) > _build/default/src/.matrix.objs/matrix__Eval.impl.d
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.matrix.objs/byte -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Matrix -o src/.matrix.objs/byte/matrix__Eval.cmo -c -impl src/eval.ml)
+> File "src/eval.ml", line 1:
+> Error: The implementation src/eval.ml
+>        does not match the interface src/.matrix.objs/byte/matrix__Eval.cmi: 
+>        Values do not match:
+>          val identity : value -> value
+>        is not included in
+>          val identity : Matrix.Ast.expr -> Matrix.Ast.expr -> value
+>        The type value -> value is not compatible with the type
+>          Matrix.Ast.expr -> Matrix.Ast.expr -> value
+>        Type value is not compatible with type Matrix.Ast.expr 
+>        File "src/eval.mli", line 8, characters 0-36: Expected declaration
+>        File "src/eval.ml", line 278, characters 4-12: Actual declaration
+[2]
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.matrix.objs/byte -I src/.matrix.objs/native -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Matrix -o src/.matrix.objs/native/matrix__Eval.cmx -c -impl src/eval.ml)
+> File "src/eval.ml", line 1:
+> Error: The implementation src/eval.ml
+>        does not match the interface src/.matrix.objs/byte/matrix__Eval.cmi: 
+>        Values do not match:
+>          val identity : value -> value
+>        is not included in
+>          val identity : Matrix.Ast.expr -> Matrix.Ast.expr -> value
+>        The type value -> value is not compatible with the type
+>          Matrix.Ast.expr -> Matrix.Ast.expr -> value
+>        Type value is not compatible with type Matrix.Ast.expr 
+>        File "src/eval.mli", line 8, characters 0-36: Expected declaration
+>        File "src/eval.ml", line 278, characters 4-12: Actual declaration
+[2]

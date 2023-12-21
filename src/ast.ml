@@ -1,17 +1,21 @@
+type varname = string
+
 type factorization = LU | CR | PDP | QR | SVD;;
 
 type expr =
-| Empty
-| Int of int
-| Float of float
-| Size of expr
-| Vector of expr * expr * expr
-| Matrix of expr * expr * expr
-| VSpace of expr * expr
-| UopExpr of uop * expr
-| BopExpr of bop * expr * expr
-| Factorization of factorization * expr
+| EEmpty
+| EInt of int
+| EFloat of float
+| EBool of bool
+| EVector of (expr * expr)
+| EMatrix of (expr * expr)
+| ESpace of (expr * expr)
+| ERange of (expr * expr)
+| EUopExpr of uop * expr
+| EBopExpr of bop * expr * expr
+| EFactorization of factorization * expr
 
-and uop =Det | Dimensions | Inverse | REF | RREF | Transpose | Eigenvalues | Eigenvectors
+and uop =
+  Neg | Square | Transpose | Norm | Det | Inverse | REF | RREF | Eigenvalues | Eigenvectors | Orth
 
-and bop = Add | Multiply | ScalarMultiply | Solve;;
+and bop = Add | Subtract | Multiply | Divide | Eq | Neq | Gt | Lt | Geq | Leq | Power | Solve

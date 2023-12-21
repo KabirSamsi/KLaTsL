@@ -2,3 +2,6 @@
 
 (** @canonical Matrix.Ast *)
 module Ast = Matrix__Ast
+
+(** @canonical Matrix.Eval *)
+module Eval = Matrix__Eval
