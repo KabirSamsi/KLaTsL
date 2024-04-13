@@ -1,0 +1,6 @@
+description = ""
+requires = "menhirLib str"
+archive(byte) = "klatsl.cma"
+archive(native) = "klatsl.cmxa"
+plugin(byte) = "klatsl.cma"
+plugin(native) = "klatsl.cmxs"

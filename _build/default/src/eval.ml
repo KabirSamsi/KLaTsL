@@ -35,6 +35,7 @@ and eval_bop op e1 e2 =
   | Add -> add v1 v2
   | Subtract -> add v1 (multiply v2 (VInt(-1)))
   | Multiply -> multiply v1 v2
+  | Divide -> divide v1 v2
   | Power -> power v1 v2
 
   | Eq -> VBool(eq v1 v2)
@@ -50,8 +51,7 @@ and eval_bop op e1 e2 =
 and eval_uop op e = let v = eval_expr e in match op with
   | Neg -> multiply v (VInt(-1))
   | Square -> multiply v v
-  
-  (* Compute the norm of a vector *)
+  | Transpose -> transpose v
   | Norm -> (match v with
     | VVector(h, t) -> power (multiply v v) (VFloat(0.5))
     | _ -> raise(TypeError "Norm can only be applied to vectors"))
@@ -158,8 +158,24 @@ and multiply v1 v2 = match v1, v2 with
   (* Multiply matrix with matrix *)
   | VMatrix(_, _), VMatrix(_, _) -> mmp v1 v2
 
-  (* All other cases *)
-  | _, _ -> failwith "Unimplemented"
+  | _, _ -> failwith "Unimplemented" (* All other cases *)
+
+(* Divide two values *)
+and divide v1 v2 = match v1, v2 with
+  | _, VEmpty -> VEmpty
+
+  (* Divide two scalars *)
+  | VInt(a), VInt(b) -> VFloat(float_of_int a /. float_of_int b)
+  | VFloat(a), VFloat(b) -> VFloat(a /. b)
+  | VInt(a), VFloat(b) | VFloat(b), VInt(a)
+    -> VFloat((float_of_int a) /. b)
+
+  (* Divide a vector/matrix by a scalar *)
+  | VVector(_, _), VInt(_) | VVector(_, _), VFloat(_)
+  | VMatrix(_, _), VInt(_) | VMatrix(_, _), VFloat(_)
+    -> scalarmultiple v1 (divide (VInt(1)) v2)
+
+  | _, _ -> raise(TypeError "Invalid types") (* All other cases *)
 
 (* Raise a value to a power *)
 and power v1 v2 = match v1, v2 with
@@ -217,7 +233,7 @@ and extract_entry v1 v2 v3 = match v1, v2, v3 with
     (* Recurse through the vector otherwise *)
     else extract_entry v1 t (add v1 (VInt(1))) 
 
-  | _, _, _ -> raise(TypeError "Invalid types")
+  | _, _, _ -> raise(TypeError "Types do not match")
 
 (** Extracts the specified row from a given matrix**)
 and extract_row v1 matrix = match v1, matrix with
@@ -230,6 +246,7 @@ and extract_row v1 matrix = match v1, matrix with
       recurses over remainder *)
     VVector(extract_entry v1 h (VInt(0)), extract_row v1 t)
 
+  | VInt(row_index), VMatrix(h, t) -> VEmpty
   | _, _ -> raise(TypeError "Invalid types, can only be applied to matrix")
 
 (* Compute the product of a matrix (m) and vector (v) *)
@@ -275,7 +292,7 @@ and kmatrix dim k =
   in kmatrix_helper dim k (VInt(0))
 
 (* Generate a square identity matrix of the specified columns *)
-and identity dim =
+and identity e = let dim = eval_expr e in
   (* Generate the kth column of a size x size identity matrix
     size is the dimension (square), k is the position of the pivot, current is acc*)
   let rec identity_vector size k current = 
@@ -294,10 +311,21 @@ and identity dim =
     )
   in identity_helper dim (VInt(0))
 
+(* Build the transpose of a matrix *)
+and transpose v = match v with
+  | VEmpty -> VEmpty
+
+  (* Extract each row of the matrix and insert it as a new column *)
+  | VMatrix(h, t) -> let rec transpose_helper row_index matrix =
+      VMatrix(extract_row row_index matrix,
+      transpose_helper (add row_index (VInt(1))) matrix)
+    in transpose_helper (VInt(0)) v
+
+  | _ -> raise(TypeError "Types do not match")
+
 and ref e1 e2 = failwith "Unimplemented"
 and rref e1 e2 = failwith "Unimplemented"
 and independent v = failwith "Unimplemented"
-and transpose v = failwith "Unimplemented"
 and inverse v = failwith "Unimplemented"
 and det v = failwith "Unimplemented"
 and orth v = failwith "Unimplemented"

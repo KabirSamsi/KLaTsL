@@ -1,148 +1,63 @@
 # dune build
 # OCAMLPARAM: unset
 # Shared cache: disabled
-# Workspace root: "/Users/kabirsamsi/Desktop/Software Projects/PL/MaTriX"
+# Shared cache location: /Users/kabirsamsi/.cache/dune/db
+# Workspace root: "/Users/kabirsamsi/Desktop/Software Projects/Compilers & PL
+# Stuff/KLaTsL"
 # Auto-detected concurrency: 8
-$ /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt -config > /var/folders/q2/dq7hmqnn4_18ng02v_hkwqpc0000gn/T/dune_abfd22_output
 # Dune context:
 #  { name = "default"
 #  ; kind = "default"
 #  ; profile = Dev
 #  ; merlin = true
-#  ; for_host = None
 #  ; fdo_target_exe = None
 #  ; build_dir = In_build_dir "default"
-#  ; ocaml_bin = External "/Users/kabirsamsi/.opam/cs3110-2023fa/bin"
-#  ; ocaml = Ok External "/Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocaml"
-#  ; ocamlc = External "/Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt"
-#  ; ocamlopt =
-#      Ok External "/Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlopt.opt"
-#  ; ocamldep =
-#      Ok External "/Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamldep.opt"
-#  ; ocamlmklib =
-#      Ok External "/Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlmklib.opt"
-#  ; env =
+#  ; installed_env =
 #      map
-#        { "DUNE_OCAML_HARDCODED" :
-#            "/Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml:/Users/kabirsamsi/.opam/cs3110-2023fa/lib"
-#        ; "DUNE_OCAML_STDLIB" :
-#            "/Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml"
-#        ; "DUNE_SOURCEROOT" :
-#            "/Users/kabirsamsi/Desktop/Software Projects/PL/MaTriX"
-#        ; "INSIDE_DUNE" :
-#            "/Users/kabirsamsi/Desktop/Software Projects/PL/MaTriX/_build/default"
-#        ; "OCAMLFIND_IGNORE_DUPS_IN" :
-#            "/Users/kabirsamsi/Desktop/Software Projects/PL/MaTriX/_build/install/default/lib"
-#        ; "OCAMLPATH" :
-#            "/Users/kabirsamsi/Desktop/Software Projects/PL/MaTriX/_build/install/default/lib"
-#        ; "OCAMLTOP_INCLUDE_PATH" :
-#            "/Users/kabirsamsi/Desktop/Software Projects/PL/MaTriX/_build/install/default/lib/toplevel"
+#        { "INSIDE_DUNE" :
+#            "/Users/kabirsamsi/Desktop/Software Projects/Compilers & PL Stuff/KLaTsL/_build/default"
 #        ; "OCAML_COLOR" : "always"
 #        ; "OPAMCOLOR" : "always"
 #        }
-#  ; findlib_paths =
-#      [ External "/Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml"
-#      ; External "/Users/kabirsamsi/.opam/cs3110-2023fa/lib"
-#      ]
-#  ; natdynlink_supported = true
-#  ; supports_shared_libraries = true
-#  ; ocaml_config =
-#      { version = "5.0.0"
-#      ; standard_library_default =
-#          "/Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml"
-#      ; standard_library = "/Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml"
-#      ; standard_runtime = "the_standard_runtime_variable_was_deleted"
-#      ; ccomp_type = "cc"
-#      ; c_compiler = "cc"
-#      ; ocamlc_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
-#      ; ocamlc_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
-#      ; ocamlopt_cflags =
-#          [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-pthread" ]
-#      ; ocamlopt_cppflags = [ "-D_FILE_OFFSET_BITS=64" ]
-#      ; bytecomp_c_compiler =
-#          [ "cc"
-#          ; "-O2"
-#          ; "-fno-strict-aliasing"
-#          ; "-fwrapv"
-#          ; "-pthread"
-#          ; "-D_FILE_OFFSET_BITS=64"
-#          ]
-#      ; bytecomp_c_libraries = [ "-lm"; "-lpthread" ]
-#      ; native_c_compiler =
-#          [ "cc"
-#          ; "-O2"
-#          ; "-fno-strict-aliasing"
-#          ; "-fwrapv"
-#          ; "-pthread"
-#          ; "-D_FILE_OFFSET_BITS=64"
-#          ]
-#      ; native_c_libraries = [ "-lm"; "-lpthread" ]
-#      ; native_pack_linker = [ "ld"; "-r"; "-o" ]
-#      ; cc_profile = []
-#      ; architecture = "arm64"
-#      ; model = "default"
-#      ; int_size = 63
-#      ; word_size = 64
-#      ; system = "macosx"
-#      ; asm = [ "cc"; "-c"; "-Wno-trigraphs" ]
-#      ; asm_cfi_supported = true
-#      ; with_frame_pointers = false
-#      ; ext_exe = ""
-#      ; ext_obj = ".o"
-#      ; ext_asm = ".s"
-#      ; ext_lib = ".a"
-#      ; ext_dll = ".so"
-#      ; os_type = "Unix"
-#      ; default_executable_name = "a.out"
-#      ; systhread_supported = true
-#      ; host = "aarch64-apple-darwin21.6.0"
-#      ; target = "aarch64-apple-darwin21.6.0"
-#      ; profiling = false
-#      ; flambda = false
-#      ; spacetime = false
-#      ; safe_string = true
-#      ; exec_magic_number = "Caml1999X032"
-#      ; cmi_magic_number = "Caml1999I032"
-#      ; cmo_magic_number = "Caml1999O032"
-#      ; cma_magic_number = "Caml1999A032"
-#      ; cmx_magic_number = "Caml1999Y032"
-#      ; cmxa_magic_number = "Caml1999Z032"
-#      ; ast_impl_magic_number = "Caml1999M032"
-#      ; ast_intf_magic_number = "Caml1999N032"
-#      ; cmxs_magic_number = "Caml1999D032"
-#      ; cmt_magic_number = "Caml1999T032"
-#      ; natdynlink_supported = true
-#      ; supports_shared_libraries = true
-#      ; windows_unicode = false
-#      }
+#  ; instrument_with = []
 #  }
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamldep.opt -modules -impl src/eval.ml) > _build/default/src/.matrix.objs/matrix__Eval.impl.d
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlc.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -bin-annot -I src/.matrix.objs/byte -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Matrix -o src/.matrix.objs/byte/matrix__Eval.cmo -c -impl src/eval.ml)
+$ /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlc.opt -config > /var/folders/q2/dq7hmqnn4_18ng02v_hkwqpc0000gn/T/dune_9b73a3_output
+# Promoting "_build/default/KLaTsL.opam" to "KLaTsL.opam"
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -bin-annot -I src/.klatsl.objs/byte -no-alias-deps -opaque -o src/.klatsl.objs/byte/klatsl.cmo -c -impl src/klatsl.ml-gen)
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamldep.opt -modules -impl src/eval.ml) > _build/default/src/.klatsl.objs/klatsl__Eval.impl.d
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamldep.opt -modules -intf src/eval.mli) > _build/default/src/.klatsl.objs/klatsl__Eval.intf.d
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamldep.opt -modules -impl src/ast.ml) > _build/default/src/.klatsl.objs/klatsl__Ast.impl.d
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.klatsl.objs/byte -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ocaml/str -no-alias-deps -opaque -open Klatsl -o src/.klatsl.objs/byte/klatsl__Ast.cmo -c -impl src/ast.ml)
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.klatsl.objs/byte -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ocaml/str -no-alias-deps -opaque -open Klatsl -o src/.klatsl.objs/byte/klatsl__Eval.cmi -c -intf src/eval.mli)
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I test/.main.eobjs/byte -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ocaml/str -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ocaml/unix -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ounit2 -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ounit2/advanced -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/qcheck -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/qcheck-core -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/qcheck-core/runner -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/qcheck-ounit -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/seq -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/stdlib-shims -I src/.klatsl.objs/byte -no-alias-deps -opaque -o test/.main.eobjs/byte/dune__exe__Main.cmi -c -intf test/main.mli)
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlc.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -bin-annot -I src/.klatsl.objs/byte -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Klatsl -o src/.klatsl.objs/byte/klatsl__Eval.cmo -c -impl src/eval.ml)
 > File "src/eval.ml", line 1:
 > Error: The implementation src/eval.ml
->        does not match the interface src/.matrix.objs/byte/matrix__Eval.cmi: 
+>        does not match the interface src/.klatsl.objs/byte/klatsl__Eval.cmi: 
 >        Values do not match:
->          val identity : value -> value
+>          val identity : Ast.expr -> value
 >        is not included in
->          val identity : Matrix.Ast.expr -> Matrix.Ast.expr -> value
->        The type value -> value is not compatible with the type
->          Matrix.Ast.expr -> Matrix.Ast.expr -> value
->        Type value is not compatible with type Matrix.Ast.expr 
+>          val identity : Ast.expr -> Ast.expr -> value
+>        The type Ast.expr -> value is not compatible with the type
+>          Ast.expr -> Ast.expr -> value
+>        Type value is not compatible with type Ast.expr -> value
 >        File "src/eval.mli", line 8, characters 0-36: Expected declaration
->        File "src/eval.ml", line 278, characters 4-12: Actual declaration
+>        File "src/eval.ml", line 295, characters 4-12: Actual declaration
 [2]
-$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2023fa/bin/ocamlopt.opt -w +a-4-6-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -warn-error -a+31 -g -I src/.matrix.objs/byte -I src/.matrix.objs/native -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2023fa/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Matrix -o src/.matrix.objs/native/matrix__Eval.cmx -c -impl src/eval.ml)
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.klatsl.objs/byte -I src/.klatsl.objs/native -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Klatsl -o src/.klatsl.objs/native/klatsl__Eval.cmx -c -impl src/eval.ml)
 > File "src/eval.ml", line 1:
 > Error: The implementation src/eval.ml
->        does not match the interface src/.matrix.objs/byte/matrix__Eval.cmi: 
+>        does not match the interface src/.klatsl.objs/byte/klatsl__Eval.cmi: 
 >        Values do not match:
->          val identity : value -> value
+>          val identity : Ast.expr -> value
 >        is not included in
->          val identity : Matrix.Ast.expr -> Matrix.Ast.expr -> value
->        The type value -> value is not compatible with the type
->          Matrix.Ast.expr -> Matrix.Ast.expr -> value
->        Type value is not compatible with type Matrix.Ast.expr 
+>          val identity : Ast.expr -> Ast.expr -> value
+>        The type Ast.expr -> value is not compatible with the type
+>          Ast.expr -> Ast.expr -> value
+>        Type value is not compatible with type Ast.expr -> value
 >        File "src/eval.mli", line 8, characters 0-36: Expected declaration
->        File "src/eval.ml", line 278, characters 4-12: Actual declaration
+>        File "src/eval.ml", line 295, characters 4-12: Actual declaration
 [2]
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w -49 -nopervasives -nostdlib -g -I src/.klatsl.objs/byte -I src/.klatsl.objs/native -intf-suffix .ml-gen -no-alias-deps -opaque -o src/.klatsl.objs/native/klatsl.cmx -c -impl src/klatsl.ml-gen)
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I test/.main.eobjs/byte -I test/.main.eobjs/native -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ocaml/str -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ocaml/unix -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ounit2 -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ounit2/advanced -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/qcheck -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/qcheck-core -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/qcheck-core/runner -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/qcheck-ounit -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/seq -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/stdlib-shims -I src/.klatsl.objs/byte -I src/.klatsl.objs/native -intf-suffix .ml -no-alias-deps -opaque -o test/.main.eobjs/native/dune__exe__Main.cmx -c -impl test/main.ml)
+$ (cd _build/default && /Users/kabirsamsi/.opam/cs3110-2024sp/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I src/.klatsl.objs/byte -I src/.klatsl.objs/native -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/menhirLib -I /Users/kabirsamsi/.opam/cs3110-2024sp/lib/ocaml/str -intf-suffix .ml -no-alias-deps -opaque -open Klatsl -o src/.klatsl.objs/native/klatsl__Ast.cmx -c -impl src/ast.ml)

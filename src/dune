@@ -1,4 +1,4 @@
 (library
-  (name matrix)
-  (public_name MaTriX)
+  (name klatsl)
+  (public_name KLaTsL)
   (libraries str menhirLib))

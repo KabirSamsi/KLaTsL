@@ -1,0 +1,54 @@
+(lang dune 3.14)
+(name KLaTsL)
+(sections (lib .) (libexec .))
+(files
+ (lib
+  (META
+   ast.ml
+   dune-package
+   eval.ml
+   eval.mli
+   klatsl.a
+   klatsl.cma
+   klatsl.cmi
+   klatsl.cmt
+   klatsl.cmx
+   klatsl.cmxa
+   klatsl.ml
+   klatsl__Ast.cmi
+   klatsl__Ast.cmt
+   klatsl__Ast.cmx
+   klatsl__Eval.cmi
+   klatsl__Eval.cmt
+   klatsl__Eval.cmti
+   klatsl__Eval.cmx
+   opam))
+ (libexec (klatsl.cmxs)))
+(library
+ (name KLaTsL)
+ (kind normal)
+ (archives (byte klatsl.cma) (native klatsl.cmxa))
+ (plugins (byte klatsl.cma) (native klatsl.cmxs))
+ (native_archives klatsl.a)
+ (requires str menhirLib)
+ (main_module_name Klatsl)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name klatsl)
+     (visibility public)
+     (kind alias)
+     (source (path Klatsl) (impl (path klatsl.ml-gen))))
+    (name Klatsl)
+    (modules
+     (module
+      (obj_name klatsl__Ast)
+      (visibility public)
+      (source (path Ast) (impl (path ast.ml))))
+     (module
+      (obj_name klatsl__Eval)
+      (visibility public)
+      (source (path Eval) (intf (path eval.mli)) (impl (path eval.ml))))))
+   (wrapped true))))

@@ -16,6 +16,6 @@ type expr =
 | EFactorization of factorization * expr
 
 and uop =
-  Neg | Square | Norm | Det | Inverse | REF | RREF | Transpose | Eigenvalues | Eigenvectors | Orth
+  Neg | Square | Transpose | Norm | Det | Inverse | REF | RREF | Eigenvalues | Eigenvectors | Orth
 
 and bop = Add | Subtract | Multiply | Divide | Eq | Neq | Gt | Lt | Geq | Leq | Power | Solve

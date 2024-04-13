@@ -1,6 +1,0 @@
-description = ""
-requires = "menhirLib str"
-archive(byte) = "matrix.cma"
-archive(native) = "matrix.cmxa"
-plugin(byte) = "matrix.cma"
-plugin(native) = "matrix.cmxs"
