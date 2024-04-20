@@ -1,5 +1,3 @@
-type varname = string
-
 type factorization = LU | CR | PDP | QR | SVD;;
 
 type varname = string

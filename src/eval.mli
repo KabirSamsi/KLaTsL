@@ -4,8 +4,8 @@ type value
 
 val eval_expr : expr -> value
 
-(* Creates an identity matrix with the specified dimensions*)
-val identity : expr -> expr -> value
+(* Creates an identity matrix with the specified dimension*)
+val identity : expr -> value
 
 (* Row reduces a matrix of specified dimensions to reduced echelon form*)
 val ref: expr -> expr -> value

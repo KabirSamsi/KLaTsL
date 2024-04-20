@@ -3,27 +3,19 @@ open Ast
 exception TypeError of string
 exception DimensionError
 
-type value =
-| VEmpty
-| VInt of int
-| VFloat of float
-| VBool of bool
-| VVector of (value * value)
-| VMatrix of (value * value)
-| VSpace of (value * value)
-
 (* Stores the environment mapping bindings to values *)
-type env = (varname * value) list
+type env = (varname * expr) list
 
 (* Evaluates an expression with the specified semantics*)
 let rec eval_expr expr = match expr with
-  | EEmpty -> VEmpty;
-  | EInt(a) -> VInt(a);
-  | EFloat(a) -> VFloat(a);
-  | EBool(a) -> VBool(a);
-  | EVector(h, t) -> VVector(eval_expr h, eval_expr t)
-  | EMatrix(h, t) -> VMatrix(eval_expr h, eval_expr t)
-  | ESpace(h, t) -> VSpace(eval_expr h, eval_expr t)
+  | EEmpty
+  | EInt(a)
+  | EFloat(a) 
+  | EBool(a) -> expr
+
+  | EVector(h, t) -> EVector(eval_expr h, eval_expr t)
+  | EMatrix(h, t) -> EMatrix(eval_expr h, eval_expr t)
+  | ESpace(h, t) -> ESpace(eval_expr h, eval_expr t)
 
   | EBopExpr(b, e1, e2) -> eval_bop b e1 e2
   | EUopExpr(u, e) -> eval_uop u e
@@ -59,7 +51,7 @@ and eval_uop op e = let v = eval_expr e in match op with
   | _ -> failwith "Unimplemented"
 
 (* Add two values*)
-and add v1 v2 = match v1, v2 with
+and add e1 e2 = match (eval_expr e1), (eval_expr e2) with
   | VEmpty, VEmpty -> VEmpty;
   | VEmpty, _ | _, VEmpty -> raise(DimensionError)
   
