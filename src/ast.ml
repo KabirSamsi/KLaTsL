@@ -2,29 +2,44 @@ type factorization = LU | CR | PDP | QR | SVD;;
 
 type varname = string
 
-type expr =
-(* Baseline Types *)
-| EEmpty
-| EInt of int
-| EFloat of float
-| EBool of bool
+type uop =
+| Read | Not | Len | Id | Det | Dim | Square | Inv
+| Ref | Rref | Span | Transpose | Abs | Norm
 
-| EVector of (expr * expr)
-| EMatrix of (expr * expr)
-| ESpace of (expr * expr)
-| ERange of (expr * expr)
+type bop =
+| Plus | Minus | Times | Divide | Pow | Cross
+| Diff | Range | Get | Eq | Gt | Geq | Lt | Leq
+| Implies | Iff | Solve | Change | Fac
+
+type top =
+| Set | Gen | Squeeze
+
+type expr =
+(* Terminals Types *)
+| Unit
+| Int of int
+| Float of float
+| Bool of bool
+
+(* Variables *)
+| Var of varname
+
+(* Linear Algebra structures *)
+| Vector of expr list
+| Space of expr list
+| Range of expr * expr
 
 (* Operators *)
-| EUopExpr of uop * expr
-| EBopExpr of bop * expr * expr
+| UExpr of uop * expr
+| BExpr of bop * expr * expr
+| TExpr of top * expr * expr * expr
 
-(* NOTE: Turn into unary operator *)
-| EFactorization of factorization * expr
+(* Ifs and Loops *)
+| If of expr * expr * expr
+| While of expr * expr
+| For of varname * expr * expr * expr
 
 (* Definitions And Functions *)
+| Assgn of varname * expr
 | Let of varname * expr * expr
-
-and uop =
-  Neg | Square | Transpose | Norm | Det | Inverse | REF | RREF | Eigenvalues | Eigenvectors | Orth
-
-and bop = Add | Subtract | Multiply | Divide | Eq | Neq | Gt | Lt | Geq | Leq | Power | Solve
+| Fun of expr list * expr

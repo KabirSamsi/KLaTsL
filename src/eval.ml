@@ -1,4 +1,4 @@
-open Ast
+(* open Ast
 
 exception TypeError of string
 exception DimensionError
@@ -323,4 +323,4 @@ and det v = failwith "Unimplemented"
 and orth v = failwith "Unimplemented"
 and eigenvalues v = failwith "Unimplemented"
 and eigenvectors v = failwith "Unimplemented"
-and factor f e = failwith "Unimplemented"
+and factor f e = failwith "Unimplemented" *)

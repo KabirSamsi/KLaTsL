@@ -1,4 +1,8 @@
 (library
-  (name klatsl)
-  (public_name KLaTsL)
-  (libraries str menhirLib))
+ (name klatsl)
+ (public_name KLaTsL))
+
+(menhir
+ (modules parser))
+
+(ocamllex lexer)
