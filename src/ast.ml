@@ -1,18 +1,29 @@
-type factorization = LU | CR | PDP | QR | SVD;;
-
 type varname = string
+
+type typ = 
+| TUnit
+| TInt
+| TFloat
+| TBool
+| Matrix of typ list
+| Space of typ list
+| Basis of typ list
+| TFun of typ * typ
 
 type uop =
 | Read | Not | Len | Id | Det | Dim | Square | Inv
 | Ref | Rref | Span | Transpose | Abs | Norm
 
 type bop =
-| Plus | Minus | Times | Divide | Pow | Cross
-| Diff | Range | Get | Eq | Gt | Geq | Lt | Leq
-| Implies | Iff | Solve | Change | Fac
+| Plus | Minus | Times | Divide | Pow | Diff
+| Range | Get | Eq | Gt | Geq | Lt | Leq
+| Implies | Iff | Solve | Change
 
 type top =
 | Set | Gen | Squeeze
+
+type factorization =
+| QR | SVD | PDP | LU | CR
 
 type expr =
 (* Terminals Types *)
@@ -25,14 +36,15 @@ type expr =
 | Var of varname
 
 (* Linear Algebra structures *)
-| Vector of expr list
+| Matrix of expr list
 | Space of expr list
 | Range of expr * expr
 
-(* Operators *)
+(* Operators and Factorizations *)
 | UExpr of uop * expr
 | BExpr of bop * expr * expr
 | TExpr of top * expr * expr * expr
+| Fac of factorization * expr
 
 (* Ifs and Loops *)
 | If of expr * expr * expr
@@ -43,3 +55,7 @@ type expr =
 | Assgn of varname * expr
 | Let of varname * expr * expr
 | Fun of expr list * expr
+| App of expr * expr list
+
+(* Expression sequencing *)
+| Seq of expr * expr

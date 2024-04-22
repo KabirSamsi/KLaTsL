@@ -14,7 +14,6 @@ rule read = parse
 (* Binary Operators *)
 | "^" { POW }
 | "*" { TIMES }
-| "x" { CROSS }
 | "/" { DIVIDE }
 | "+" { PLUS }
 | "-" { MINUS }
@@ -34,7 +33,7 @@ rule read = parse
 | "change" { CHANGE }
 | "factor" { FAC }
 
-(* Vector & Space Declarations *)
+(* Matrix & Space Declarations *)
 | "[" { LBRACKET }
 | "]" { RBRACKET }
 | "{" { LBRACE }
@@ -62,6 +61,9 @@ rule read = parse
 | "generate" { GEN }
 | "squeeze" { SQUEEZE }
 
+(* Factorization *)
+| "fac" { FAC }
+
 (* Let & Functions *)
 | "let" { LET }
 | "in" { IN }
@@ -78,19 +80,18 @@ rule read = parse
 | "do" { DO }
 | "for" { FOR }
 
-(* Factorizations *)
-| "QR" { QR }
-| "SVD" { SVD }
-| "PDP" { PDP }
-| "CR" { CR }
-| "LU" { LU }
-
-(* Terminals *)
+(* Terminals and conjunction *)
 | "true" { TRUE }
 | "false" { FALSE }
 | "()" { UNIT }
 | ":" { TYP }
+| ";" { SEQ }
+| "QR" { QR }
+| "SVD" { SVD }
+| "PDP" { PDP }
+| "LU" { LU }
+| "CR" { CR }
+| var { VAR (Lexing.lexeme lexbuf)}
 | int { INT (int_of_string (Lexing.lexeme lexbuf)) }
 | float { FLOAT (float_of_string (Lexing.lexeme lexbuf)) }
-| var { VAR (Lexing.lexeme lexbuf)}
 | eof { EOF }

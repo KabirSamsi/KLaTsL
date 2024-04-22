@@ -1,13 +1,29 @@
-(* open Ast
+open Ast
 
 exception TypeError of string
-exception DimensionError
+exception UnboundVariable of string
 
 (* Stores the environment mapping bindings to values *)
 type env = (varname * expr) list
 
+(** lookup_env var env finds the value to which var is bound in env **)
+let rec lookup_env var = function
+| [] -> None
+| (v, e) :: _ when v = var -> Some e
+| _ :: t -> lookup_env var t
+
+(* eval_expr env expr evaluates expressions given an env context *)
+let rec eval_expr env expr = match expr with
+| Unit | Int _ | Float _ | Bool _ -> expr
+| Var v -> begin match lookup_env v env with
+    | None -> raise (UnboundVariable v)
+    | Some e -> e
+end
+| Matrix e -> Matrix(List.map (eval_expr env) e)
+| _ -> failwith "Unimplemented"
+
 (* Evaluates an expression with the specified semantics*)
-let rec eval_expr expr = match expr with
+(* let rec eval_expr expr = match expr with
   | EEmpty
   | EInt(a)
   | EFloat(a) 
@@ -320,7 +336,4 @@ and rref e1 e2 = failwith "Unimplemented"
 and independent v = failwith "Unimplemented"
 and inverse v = failwith "Unimplemented"
 and det v = failwith "Unimplemented"
-and orth v = failwith "Unimplemented"
-and eigenvalues v = failwith "Unimplemented"
-and eigenvectors v = failwith "Unimplemented"
 and factor f e = failwith "Unimplemented" *)

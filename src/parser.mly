@@ -9,19 +9,10 @@ open Ast
 %token <string> VAR
 %token TRUE
 %token FALSE
-%token TYP
-
-// Factorizations
-%token QR
-%token SVD
-%token PDP
-%token CR
-%token LU
 
 // Binary Operators
 %token POW
 %token TIMES
-%token CROSS
 %token DIVIDE
 %token PLUS
 %token MINUS
@@ -40,9 +31,8 @@ open Ast
 %token LEQ
 %token SOLVE
 %token CHANGE
-%token FAC
 
-// Vector & Space Declarations
+// Matrix & Space Declarations
 %token LBRACKET
 %token RBRACKET
 %token LBRACE
@@ -70,10 +60,13 @@ open Ast
 %token GEN
 %token SQUEEZE
 
-// Let & Functions
-%token LET
-%token IN
-%token FUN
+//Factorization
+%token FAC
+%token QR
+%token SVD
+%token PDP
+%token LU
+%token CR
 
 // If-Else
 %token IF
@@ -85,10 +78,22 @@ open Ast
 %token DO
 %token FOR
 
+// Let & Functions
+%token LET
+%token IN
+%token FUN
+
+// Sequencing
+%token SEQ
+
+// Type annotations
+%token TYP
+
 // EOF
 %token EOF
 
 // Associativity declarations
+%right SEQ
 %left EQUALS
 %left GT
 %left GEQ
@@ -111,15 +116,16 @@ expr:
 	// Terminal expressions
     | UNIT { Unit }
     | i = INT { Int i }
+    | f = FLOAT { Float f }
 	| TRUE { Bool true }
 	| FALSE { Bool false }
     
     // Vars
     | x = VAR { Var x }
 
-    // Vectors and Spaces
+    // Matrix and Spaces
     | LBRACKET; elements = separated_list(SEP, expr); RBRACKET
-    { Vector(elements) }
+    { Matrix(elements) }
 
     | LBRACE; elements = separated_list(SEP, expr); RBRACE
     { Space(elements) }
@@ -127,7 +133,6 @@ expr:
 	// Binary expressions
     | e1 = expr; POW; e2 = expr { BExpr (Pow, e1, e2) } 
 	| e1 = expr; TIMES; e2 = expr { BExpr (Times, e1, e2) } 
-    | e1 = expr; CROSS; e2 = expr { BExpr (Cross, e1, e2) } 
     | e1 = expr; DIVIDE; e2 = expr { BExpr (Divide, e1, e2) } 
 	| e1 = expr; PLUS; e2 = expr { BExpr (Plus, e1, e2) }
     | e1 = expr; MINUS; e2 = expr { BExpr (Minus, e1, e2) }
@@ -143,7 +148,6 @@ expr:
     | e1 = expr; LEQ; e2 = expr { BExpr (Leq, e1, e2) }
     | SOLVE; e1 = expr; e2 = expr {BExpr(Solve, e1, e2)}
     | CHANGE; e1 = expr; e2 = expr {BExpr(Change, e1, e2)}
-    | FAC; e1 = expr; e2 = expr { BExpr(Fac, e1, e2) }
     
     // Unary expressions
     | READ; e = expr { UExpr(Read, e) }
@@ -163,19 +167,29 @@ expr:
 
     // Ternary expressions
     | SET; e1 = expr; e2 = expr; e3 = expr { TExpr(Set, e1, e2, e3) }
-    | GEN; e1 = expr; e2 = expr; e3 = expr { TExpr(Set, e1, e2, e3) }
+    | GEN; e1 = expr; e2 = expr; e3 = expr { TExpr(Gen, e1, e2, e3) }
     | SQUEEZE; e1 = expr; e2 = expr; e3 = expr { TExpr(Squeeze, e1, e2, e3) }
+
+    // Factorizations
+    | FAC; QR; e2 = expr { Fac(QR, e2) }
+    | FAC; SVD; e2 = expr { Fac(SVD, e2) }
+    | FAC; PDP; e2 = expr { Fac(PDP, e2) }
+    | FAC; LU; e2 = expr { Fac(LU, e2) }
+    | FAC; CR; e2 = expr { Fac(CR, e2) }
 
 	// If and loops
     | IF; e1 = expr; THEN; e2 = expr; ELSE; e3 = expr { If (e1, e2, e3) }
-    | WHILE; e1 = expr; DO; e2 = expr; { While (e1, e2) }
-    | FOR; x = VAR; IN; RANGE; LBRACE; e1 = expr; SEP; e2 = expr; RBRACE; e3 = expr; { For (x, e1, e2, e3) }
+    | WHILE; e1 = expr; DO; e2 = expr { While (e1, e2) }
+    | FOR; x = VAR; IN; RANGE; LBRACE; e1 = expr; SEP; e2 = expr; RBRACE; e3 = expr { For (x, e1, e2, e3) }
 
     // Let and functions
     | LET; x = VAR; EQUALS; e1 = expr; IN; e2 = expr { Let (x, e1, e2) }
     | LET; x = VAR; EQUALS; e = expr { Assgn (x, e) }
-    | FUN; args = separated_list(SEP, expr); EQUALS; e = expr { Fun (args, e) }
+    | FUN; LBRACE; args = separated_list(SEP, expr); RBRACE; ARROW; e = expr { Fun (args, e) }
 
+    // Sequencing and application
+    | e1 = expr; SEQ; e2 = expr; { Seq (e1, e2) }
+    | e1 = expr; LBRACE; args = separated_list(SEP, expr); RBRACE {App (e1, args) }
 
 	| LPAREN; e=expr; RPAREN {e} 
 	;
