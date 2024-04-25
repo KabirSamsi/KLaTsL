@@ -1,1 +1,13 @@
+_build/*
+*.cmo
+*.cma
+*.cmi
+*.out
+*.cmx
+*.native
+*.byte
+*.coverage
 _build
+_coverage
+*.swp
+.DS_Store

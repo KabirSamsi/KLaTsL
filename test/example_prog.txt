@@ -1,1 +1,2 @@
-let x = generate 2 3 (fun x y -> 2x + 3y)
+let x = generate 2 3 (fun x y -> 2x + 3y);
+let y = [1, 2, 3, 4];

@@ -1,14 +1,11 @@
 type varname = string
 
 type typ = 
-| TUnit
-| TInt
-| TFloat
-| TBool
-| Matrix of typ list
-| Space of typ list
-| Basis of typ list
-| TFun of typ * typ
+| TUnit of int list
+| TInt of int list
+| TFloat of int list
+| TBool of int list
+| TFun of typ list * typ
 
 type uop =
 | Read | Not | Len | Id | Det | Dim | Square | Inv

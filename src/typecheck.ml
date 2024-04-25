@@ -12,15 +12,16 @@ let rec lookup_ctx var = function
 | (v, t) :: _ when v = var -> Some t
 | _ :: t -> lookup_ctx var t
 
-(* eval_expr env expr evaluates expressions given an env context *)
+(* eval_expr env expr evaluates expreessions given an env context *)
 let typecheck gamma expr = match expr with
-| Unit -> TUnit
-| Int _ -> TInt
-| Float _ -> TFloat
-| Bool _ -> TBool
+| Unit -> TUnit [1]
+| Int _ -> TInt [1]
+| Float _ -> TFloat [1]
+| Bool _ -> TBool [1]
 
 | Var v -> begin match lookup_ctx v gamma with
     | None -> raise (UnboundVariable v)
     | Some e -> e
+
 end
 | _ -> failwith "Unimplemented"

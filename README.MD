@@ -6,4 +6,3 @@ The intent of the language is to render highly mathematical operations as more m
 computational model In a sense, it's comparable to Numpy or Matlab, but aims to develop a purely functional representation.
 
 Stay posted as I eventually post a demo discussing the semantics and implementation of the language!
-
