@@ -40,7 +40,6 @@ open Ast
 %token SEP
 
 // Unary Operators
-%token READ
 %token NOT
 %token LEN
 %token ID
@@ -50,7 +49,6 @@ open Ast
 %token INV
 %token REF
 %token RREF
-%token SPAN
 %token TRANSPOSE
 %token ABS
 %token NORM
@@ -150,7 +148,6 @@ expr:
     | CHANGE; e1 = expr; e2 = expr {BExpr(Change, e1, e2)}
     
     // Unary expressions
-    | READ; e = expr { UExpr(Read, e) }
     | NOT; e = expr { UExpr(Not, e) }
     | LEN; e = expr { UExpr(Len, e) }
     | ID; e = expr { UExpr(Id, e) }
@@ -160,7 +157,6 @@ expr:
     | INV; e = expr { UExpr(Inv, e) }
     | REF; e = expr { UExpr(Ref, e) }
     | RREF; e = expr { UExpr(Rref, e) }
-    | SPAN; e = expr { UExpr(Span, e) }
     | TRANSPOSE; e = expr { UExpr(Transpose, e) }
     | ABS; e = expr; ABS { UExpr(Abs, e) }
     | NORM; e = expr; NORM { UExpr(Norm, e) }

@@ -41,7 +41,6 @@ rule read = parse
 | sep { SEP }
 
 (* Unary Operators *)
-| "read" { READ }
 | "not" { NOT }
 | "len" { LEN }
 | "id" { ID }
@@ -51,7 +50,6 @@ rule read = parse
 | "square" { SQUARE }
 | "ref" { REF }
 | "rref" { RREF }
-| "span" { SPAN }
 | "^tsp" { TRANSPOSE }
 | "|" { ABS }
 | "||" { NORM }
