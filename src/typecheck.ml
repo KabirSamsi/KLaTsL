@@ -139,6 +139,13 @@ end
     | _ -> raise (TypeError "Invalid dimensions to compute inverse")
 end
 
+| Span -> begin
+    match t with
+    | TInt [d1; d2] -> TSpace (TInt [d2], d1)
+    | TFloat [d1; d2] -> TSpace (TInt [d2], d1)
+    | _ -> raise (TypeError "Invalid types for span")
+end
+
 | Transpose ->
     let dims = get_dimensions t in
     if List.length dims = 1 then swap_dims [1; (List.hd dims)] t
@@ -157,8 +164,6 @@ end
     | _ -> raise (TypeError "Type must be int or float matrix")
 end
 
-| _ -> failwith "Unimplemented"
-
 and typecheck_bop op t1 t2 = match op with
 | Plus | Minus -> begin
     match t1, t2 with
@@ -169,6 +174,47 @@ and typecheck_bop op t1 t2 = match op with
     | TFloat d1, TInt d2 when d1 = d2 -> TFloat d1
     | TInt d1, TFloat d2 when d1 = d2 -> TFloat d1
     | _ -> raise (TypeError "Dimensions or types do not match")
+end
+
+| Times -> begin
+    match t1, t2 with
+    | TInt d, TInt []
+    | TInt [], TInt d
+    -> TInt d
+
+    | TInt d, TFloat []
+    | TFloat [], TInt d
+    | TFloat d, TFloat []
+    | TFloat [], TFloat d
+    | TFloat d, TInt []
+    | TInt [], TFloat d
+    -> TFloat d
+
+    | TInt [d11; d12], TInt d2 when List.length d2 > 2
+        -> raise (TypeError "Cannot multiply matrices of dimensions greater than 2")
+    | TFloat [d11; d12], TFloat d2 when List.length d2 > 2
+        -> raise (TypeError "Cannot multiply matrices of dimensions greater than 2")
+    | TInt [d11; d12], TFloat d2 when List.length d2 > 2
+        -> raise (TypeError "Cannot multiply matrices of dimensions greater than 2")
+    | TFloat [d11; d12], TInt d2 when List.length d2 > 2
+        -> raise (TypeError "Cannot multiply matrices of dimensions greater than 2")
+
+    | TInt [d11; d12], TInt d2 when d12 = (List.hd d2) -> TInt [d11; (List.hd d2)]
+    | TInt [d11; d12], TFloat d2 when d12 = (List.hd d2) -> TFloat [d11; (List.hd d2)]
+    | TFloat [d11; d12], TInt d2 when d12 = (List.hd d2) -> TFloat [d11; (List.hd d2)]
+    | TFloat [d11; d12], TFloat d2 when d12 = (List.hd d2) -> TFloat [d11; (List.hd d2)]
+    | TBool [d11; d12], TBool d2 when d12 = (List.hd d2) -> TBool [d11; (List.hd d2)]
+
+    | _ -> raise (TypeError "Invalid types or dimensions for multiplication")
+end
+
+| Divide -> begin
+    match t1, t2 with
+    | TInt d1, TInt []
+    | TInt d1, TFloat []
+    | TFloat d1, TInt []
+    | TFloat d1, TFloat [] -> TFloat d1
+    | _ -> raise (TypeError "Invalid types for division")
 end
 
 | Get -> let t1_dims = get_dimensions t1 in begin

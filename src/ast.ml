@@ -11,8 +11,8 @@ type typ =
 | TRange
 
 type uop =
-| Not | Len | Id | Det | Dim | Square | Inv
-| Transpose | Ref | Rref | Abs | Norm
+| Not | Len | Det | Dim | Square | Inv
+| Span | Transpose | Ref | Rref | Abs | Norm
 
 type bop =
 | Plus | Minus | Times | Divide | Pow | Diff

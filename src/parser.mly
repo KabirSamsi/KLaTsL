@@ -42,13 +42,13 @@ open Ast
 // Unary Operators
 %token NOT
 %token LEN
-%token ID
 %token DET
 %token DIM
 %token SQUARE
 %token INV
 %token REF
 %token RREF
+%token SPAN
 %token TRANSPOSE
 %token ABS
 %token NORM
@@ -150,13 +150,13 @@ expr:
     // Unary expressions
     | NOT; e = expr { UExpr(Not, e) }
     | LEN; e = expr { UExpr(Len, e) }
-    | ID; e = expr { UExpr(Id, e) }
     | DET; e = expr { UExpr(Det, e) }
     | DIM; e = expr { UExpr(Dim, e) }
     | SQUARE; e = expr { UExpr(Square, e) }
     | INV; e = expr { UExpr(Inv, e) }
     | REF; e = expr { UExpr(Ref, e) }
     | RREF; e = expr { UExpr(Rref, e) }
+    | SPAN; e = expr { UExpr(Span, e) }
     | TRANSPOSE; e = expr { UExpr(Transpose, e) }
     | ABS; e = expr; ABS { UExpr(Abs, e) }
     | NORM; e = expr; NORM { UExpr(Norm, e) }

@@ -43,13 +43,13 @@ rule read = parse
 (* Unary Operators *)
 | "not" { NOT }
 | "len" { LEN }
-| "id" { ID }
 | "det" { DET }
 | "inv" { INV }
 | "dim" { DIM }
 | "square" { SQUARE }
 | "ref" { REF }
 | "rref" { RREF }
+| "span" { SPAN }
 | "^tsp" { TRANSPOSE }
 | "|" { ABS }
 | "||" { NORM }
